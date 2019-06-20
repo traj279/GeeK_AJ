@@ -1,0 +1,15 @@
+HTTP/1.1 200 OK
+Date: Thu, 17 Jan 2019 05:17:21 GMT
+Content-Type: application/json
+Transfer-Encoding: chunked
+Connection: keep-alive
+Set-Cookie: __cfduid=d641026bf8e38e9e63d7cf835e32150531547702241; expires=Fri, 17-Jan-20 05:17:21 GMT; path=/; domain=.ipapi.co; HttpOnly
+Access-Control-Allow-Origin: *
+Allow: HEAD, POST, OPTIONS, OPTIONS, GET
+Vary: Host
+X-Frame-Options: SAMEORIGIN
+Expect-CT: max-age=604800, report-uri="https://report-uri.cloudflare.com/cdn-cgi/beacon/expect-ct"
+Server: cloudflare
+CF-RAY: 49a65adf3a7da8ee-SIN
+Content-Encoding: br
+

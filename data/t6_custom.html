@@ -1,0 +1,213 @@
+// JavaScript Document
+
+jQuery(document).ready(function($) {
+	/*$(".contact-tabbing a[href="+window.location.hash+"]").click();*/
+	$("#videoModal").find("iframe").attr("src",$(".video-popup").attr("data-src"));
+		if ( $( "#videoModal" ).length ) {
+			
+			var modal = document.getElementById('videoModal');
+		
+			if ( $( "#videoPop" ).length ) {
+				var btn = document.getElementById("videoPop");
+				
+				btn.onclick = function() {
+					jQuery("#videoModal").fadeIn('slow');
+				}
+			}
+			
+			
+			if ( $( ".videoclose" ).length ) {
+				var span = document.getElementsByClassName("videoclose")[0];
+				span.onclick = function() {
+					jQuery("#videoModal").fadeOut('slow');
+					jQuery('.modal-content iframe').attr('src', jQuery('.modal-content iframe').attr('src'));
+				}
+			}
+			
+			window.onclick = function(event) {
+				if (event.target == modal) {
+					jQuery("#videoModal").fadeOut('slow');
+				}
+			}
+			
+			$('body').click(function() {
+				if (event.target == modal) {
+					jQuery("#videoModal").fadeOut('slow');
+					jQuery('.modal-content iframe').attr('src', jQuery('.modal-content iframe').attr('src'));
+				}
+			});
+		}
+		
+	});
+	
+jQuery(document).ready(function($) {
+	
+	$("#resourceVideoModal").find("iframe").attr("src",$(".resource-popup").attr("data-src"));
+		if ( $( "#resourceVideoModal" ).length ) {
+			
+			var modal = document.getElementById('resourceVideoModal');
+			$(document).on('click','.resource-popup',function(){
+				jQuery("#resourceVideoModal").fadeIn('slow');
+			});
+			
+			if ( $( ".resourcevideoclose" ).length ) {
+				var span = document.getElementsByClassName("resourcevideoclose")[0];
+				span.onclick = function() {
+					
+					jQuery("#resourceVideoModal").fadeOut('slow');
+					jQuery('.modal-content iframe').attr('src', jQuery('.modal-content iframe').attr('src'));
+				}
+			}
+			
+			$(document).on('click','#resourceVideoModal',function(){
+				$('.toolbar button').removeClass("active");
+				$(this).addClass("active");
+			});
+			
+			$('body').click(function() {
+				if (event.target == modal) {
+					jQuery("#resourceVideoModal").fadeOut('slow');
+				}
+			});
+
+		}
+});		
+	
+jQuery(document).ready(function($) {
+	$("#registerModal").find(".modal-content").attr("src",$(".form-popup").attr("data-src"));
+		var modal = document.getElementById('registerModal');
+		
+		
+		
+		if ( $( "#formPop" ).length ) {
+			var btn = document.getElementById("formPop");
+			btn.onclick = function() {
+				jQuery("#registerModal").fadeIn('slow');
+			}
+		}
+		
+		
+		if ( $( ".registerclose" ).length ) {
+			var span = document.getElementsByClassName("registerclose")[0];
+			span.onclick = function() {
+				
+				jQuery("#registerModal").fadeOut('slow');
+				jQuery('.registermodal .modal-content').attr('src', jQuery('.registermodal .modal-content').attr('src'));
+			}
+		}
+		
+		
+		window.onclick = function(event) {
+			if (event.target == modal) {
+				jQuery("#registerModal").fadeOut('slow');
+			}
+		}
+	});
+	
+	
+jQuery(document).ready(function($) {
+	$("#applicationModal").find(".modal-content").attr("src",$(".application-popup").attr("data-src"));
+		var modal = document.getElementById('applicationModal');
+		
+		
+		
+		if ( $( "#applicationPop,#applicationPop1,#applicationPop2,#applicationPop3,#applicationPop4" ).length ) {
+			var btn = document.getElementById("applicationPop");
+			btn.onclick = function() {
+				jQuery("#applicationModal").fadeIn('slow');
+			}
+			var btn1 = document.getElementById("applicationPop1");
+			btn1.onclick = function() {
+				jQuery("#applicationModal").fadeIn('slow');
+			}
+			var btn2 = document.getElementById("applicationPop2");
+			btn2.onclick = function() {
+				jQuery("#applicationModal").fadeIn('slow');
+			}
+			var btn3 = document.getElementById("applicationPop3");
+			btn3.onclick = function() {
+				jQuery("#applicationModal").fadeIn('slow');
+			}
+			var btn4 = document.getElementById("applicationPop4");
+			btn4.onclick = function() {
+				jQuery("#applicationModal").fadeIn('slow');
+			}
+		}
+		
+		
+		if ( $( ".applicationclose" ).length ) {
+			var span = document.getElementsByClassName("applicationclose")[0];
+			span.onclick = function() {
+				
+				jQuery("#applicationModal").fadeOut('slow');
+				jQuery('.applicationmodal .modal-content').attr('src', jQuery('.applicationmodal .modal-content').attr('src'));
+			}
+		}
+		
+		
+		window.onclick = function(event) {
+			if (event.target == modal) {
+				jQuery("#applicationModal").fadeOut('slow');
+			}
+		}
+	});
+	
+	
+	
+
+jQuery(document).ready(function($) {
+	$('#main-menu ul.nav > li.menu-item-has-children > a').attr('data-toggle','dropdown');
+	$('#main-menu ul.nav > li > ul > li.menu-item-has-children > a').addClass('sub-toggle');
+});
+
+jQuery(document).ready(function($) {
+jQuery('.twitter-blog').on('DOMSubtreeModified propertychange',"#twitter-widget-0", function() {
+        jQuery(".twitter-timeline").contents().find(".timeline-Tweet-media").css("display", "none");
+        jQuery(".twitter-block").css("height", "100%");
+    });
+});
+	
+(function($){
+
+	$('.application-popup').click(function (event) {
+
+		event.preventDefault();
+
+		$('input[name="position"]').val(($(this).attr('data-career-position')));
+
+	});
+	/*$('.testhouse_parent').click(false);*/
+})(jQuery);
+
+jQuery(document).ready(function($) {
+    $(".simcal-calendar").addClass("globalskew calendermain");
+	$(".simcal-calendar-grid").addClass("boarddirector-overview");
+});
+
+jQuery(document).ready(function($) {
+	//$(".simcal-nav-button").removeAttr("disabled");
+	//$(".simcal-nav-button").addAttr("enabled", "enabled");
+	
+	
+});
+
+
+
+
+function setLocation(ipAddress) {
+   $.getJSON("https://ipapi.co/"+ipAddress+"/json", function(data) {
+		document.cookie = "u_latitude="+data.latitude;
+		document.cookie = "u_longitude="+data.longitude;
+		console.log(data.latitude);
+		console.log(data.longitude);
+   });
+}
+	/*
+	
+jQuery(document).ready(function($) {	
+	$(".nav-header > ul > li > a").attr("data-toggle", "dropdown");
+});*/
+
+$(window).on('load', function() {
+   $('#preloader').delay(100).fadeOut('slow',function(){$(this).remove();});
+});

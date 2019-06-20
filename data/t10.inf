@@ -1,0 +1,13 @@
+[t10]
+FileName1=t10_json.html
+URL1=https://ipapi.co/61.12.76.46/json
+Total=2
+ContentType=application/json
+SnapshotXmlFile=snapshot_10.xml
+RequestHeaderFile=t10_RequestHeader.txt
+RequestBodyFile=NONE
+ResponseHeaderFile=t10_ResponseHeader.txt
+FileName2=t10_circle-arrow.png
+URL2=https://www.testhouse.net/ast/themes/testhouse/images/circle-arrow.png
+[ProtocolInfo]
+ProtocolId=QTWeb

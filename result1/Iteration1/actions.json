@@ -1,0 +1,14 @@
+[
+    {
+        "actionName": "Action",
+        "steps": [
+            {
+                "stepId": "STEP1",
+                "stepName": "Url: www.testhouse.net",
+                "infFile": "t1.inf",
+                "time": 1561012432197
+            }
+        ],
+        "transactions": []
+    }
+]

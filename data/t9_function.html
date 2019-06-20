@@ -1,0 +1,663 @@
+$(document).ready(function(){
+
+	// $('#fullpage').fullpage({
+	// 	menu: '#menu',
+	// 	anchors: ['firstPage', 'secondPage', '3rdPage'],
+	// 	autoScrolling: false
+	// });
+
+
+
+	// for wow effect work in scroll time
+	wow = new WOW(
+      {
+        animateClass: 'animated',
+        offset:       100,
+        mobile:       true,
+        live:         true ,
+        callback:     function(box) { 
+          console.log("WOW: animating <" + box.tagName.toLowerCase() + ">")
+        }
+      }
+    );
+    wow.init();
+
+
+	//sticky js
+	$(window).bind('scroll', function() {
+		var navHeight = 130; // custom nav height
+		($(window).scrollTop() > navHeight) ? $('nav.navbar').addClass('sticky') : $('nav.navbar').removeClass('sticky');
+	});
+
+
+	//toggle js
+    function toggleNavbarMethod() {
+        if ($(window).width() > 768) {
+            $('.navbar .dropdown').on('mouseover', function(){
+                $('.dropdown-toggle', this).trigger('click'); 
+            }).on('mouseout', function(){
+                $('.dropdown-toggle', this).trigger('click').blur();
+            });
+        }
+        else {
+            $('.navbar .dropdown').off('mouseover').off('mouseout');
+        }
+    }
+
+	// toggle navbar hover
+    toggleNavbarMethod();
+    
+    // bind resize event
+    $(window).resize(toggleNavbarMethod);
+
+
+
+    // smooth scroll js
+	$('.scrolldown a[href*="#"]')
+	  // Remove links that don't actually link to anything
+	  .not('[href="#"]')
+	  .not('[href="#0"]')
+	  .click(function(event) {
+	    // On-page links
+	    if (
+		      location.pathname.replace(/^\//, '') == this.pathname.replace(/^\//, '') 
+		      && 
+		      location.hostname == this.hostname
+		    ) {
+		  // Figure out element to scroll to
+		  var target = $(this.hash);
+		  target = target.length ? target : $('[name=' + this.hash.slice(1) + ']');
+		  // Does a scroll target exist?
+		  if (target.length) {
+		    // Only prevent default if animation is actually gonna happen
+		    event.preventDefault();
+		    $('html, body').animate({
+		      scrollTop: target.offset().top - 60
+		    }, 1000, function() {
+		      // Callback after animation
+		      // Must change focus! 
+		      var $target = $(target);
+		      $target.focus();
+		      if ($target.is(":focus")) { // Checking if the target was focused
+		        return false;
+		      } else {
+		        $target.attr('tabindex','-1'); // Adding tabindex for elements not focusable
+		        $target.focus(); // Set focus again
+		      };
+		    });
+		  }
+		}
+	}); 
+
+ //  	$('.counter').each(function() {
+	//   var $this = $(this), 
+	//       countTo = $this.attr('data-count');
+	  
+	//   $({ countNum: $this.text()}).animate({
+	//     countNum: countTo
+	//   },
+
+	//   {
+
+	//     duration: 8000,
+	//     easing:'linear',
+	//     step: function() {
+	//       $this.text(Math.floor(this.countNum));
+	//     },
+	//     complete: function() {
+	//       $this.text(this.countNum);
+	//     }
+
+	//   });  
+	// });
+
+$(document).ready(function() {
+	var a = 0;
+	$(window).scroll(function() {
+	//var oTop = $('#counter').offset().top - window.innerHeight;
+	var nav = $('#counter');
+	if (nav.length) {
+		var oTop = nav.offset().top - window.innerHeight;
+	  if (a == 0 && $(window).scrollTop() > oTop) {
+	      	$('.counter').each(function() {
+			  var $this = $(this), 
+			      countTo = $this.attr('data-count');
+			  
+			  $({ countNum: $this.text()}).animate({
+			    countNum: countTo
+			  },
+
+			  {
+
+			    duration: 8000,
+			    easing:'linear',
+			    step: function() {
+			      $this.text(Math.floor(this.countNum));
+			    },
+			    complete: function() {
+			      $this.text(this.countNum);
+			    }
+
+			  });  
+			});
+	        a = 1;
+	      }}
+	  });
+
+});
+
+  	//	 isotop filter js
+	var selectedClass = "";
+		$(".fil-cat").click(function(){ 
+		selectedClass = $(this).attr("data-rel"); 
+	 	$("#portfolio").fadeTo(100, 0.1);
+		$("#portfolio > div").not("."+selectedClass).fadeOut().removeClass('scale-anm');
+	    setTimeout(function() {
+	      $("."+selectedClass).fadeIn().addClass('scale-anm');
+	      $("#portfolio").fadeTo(300, 1);
+	    }, 300); 
+		
+	});
+
+
+	// add active class in filter 
+	  $('.toolbar button').click(function(){
+	    $('.toolbar button').removeClass("active");
+	    $(this).addClass("active");
+	});
+
+
+	// tooltip js
+	  $('[data-toggle="tooltip"]').tooltip();
+
+
+
+	//  timeline dotted slider js
+	// $('#timlyhistory').timeliny({
+ //        hideBlankYears: true
+ //    });
+
+
+
+
+	//  scroll to stick sidebar affix effect js
+	// $('.social-icons').affix({
+	//   offset: {
+	//     top: 1200,
+	//     bottom: function () {
+	//       return (this.bottom = $('footer').outerHeight(true))
+	//     }
+	//   }
+	// });
+
+
+	// on scroll add class and remove class js
+	// $(window).scroll(function() {    
+	//     var scroll = $(window).scrollTop();
+
+	//     if (scroll >= 1200) {
+	//         $(".sidebar-fix").addClass("fixedsocial");
+	//     } else {
+	//         $(".sidebar-fix").removeClass("fixedsocial");
+	//     }
+	// });
+
+
+	// var stickySidebar = new StickySidebar('#sidebar', {
+	//     topSpacing: 0,
+	//     bottomSpacing: 0,
+	//     containerSelector: false,
+	//     innerWrapperSelector: '.sidebar__inner',
+	//     resizeSensor: true,
+	//     stickyClass: 'is-affixed',
+	//     minWidth: 0
+	// });
+
+
+
+
+	// homepage top video banner logo slider
+	  $('.clientlogoslider').slick({
+	  dots: false,
+	  arrows:false,
+	  infinite: true,
+	  speed: 300,
+	  autoplay:true,
+	  slidesToShow: 5,
+	  slidesToScroll: 1,
+	  responsive: [
+		{
+		  breakpoint: 1200,
+		  settings: {
+			slidesToShow: 4,
+			slidesToScroll: 1 
+		  }
+		},
+		{
+		  breakpoint: 992,
+		  settings: {
+			slidesToShow: 3,
+			slidesToScroll: 1
+		  }
+		},
+		{
+		  breakpoint: 640,
+		  settings: {
+			slidesToShow: 2,
+			slidesToScroll: 1
+		  }
+		},
+		{
+		  breakpoint: 480,
+		  settings: {
+			slidesToShow: 1,
+			slidesToScroll: 1
+		  }
+		}
+	  ]
+	});
+
+	$('.blogclientlogoslider').slick({
+	  dots: false,
+	  arrows:false,
+	  infinite: true,
+	  speed: 300,
+	  autoplay:true,
+	  slidesToShow: 7,
+	  slidesToScroll: 1,
+	  responsive: [
+		{
+		  breakpoint: 1200,
+		  settings: {
+			slidesToShow: 5,
+			slidesToScroll: 1 
+		  }
+		},
+		{
+		  breakpoint: 992,
+		  settings: {
+			slidesToShow: 3,
+			slidesToScroll: 1 
+		  }
+		},
+		{
+		  breakpoint: 640,
+		  settings: {
+			slidesToShow: 2,
+			slidesToScroll: 1
+		  }
+		},
+		{
+		  breakpoint: 480,
+		  settings: {
+			slidesToShow: 1,
+			slidesToScroll: 1
+		  }
+		}
+	  ]
+	});
+
+
+	 
+
+	$('.bannertextslider').slick({
+	  dots: false,
+	  arrows:false,
+	  infinite: true,
+	  speed: 300,
+	  autoplay:true,
+	  slidesToShow: 1,
+	  slidesToScroll: 1,
+	});
+
+
+	// about_Say testimonial slider js
+	$('.about-slider').slick({
+	  dots: false,
+	  arrows: true,
+	  infinite: true,
+	  autoplay:true,
+	  speed: 300,
+	  slidesToShow: 2,
+	  slidesToScroll: 1,
+	  responsive: [
+	    {
+	      breakpoint: 1200,
+	      settings: {
+	        slidesToShow: 2,
+	        slidesToScroll: 1,
+	        infinite: true,
+	      }
+	    },
+	    {
+	      breakpoint: 1025,
+	      settings: {
+	        slidesToShow: 2,
+	        slidesToScroll: 1
+	      }
+	    },
+	    {
+	      breakpoint: 671,
+	      settings: {
+	        slidesToShow: 1,
+	        slidesToScroll: 1
+	      }
+	    },
+	    {
+	      breakpoint: 480,
+	      settings: {
+	        slidesToShow: 1,
+	        slidesToScroll: 1
+	      }
+	    }
+	    // You can unslick at a given breakpoint now by adding:
+	    // settings: "unslick"
+	    // instead of a settings object
+	  ]
+	});
+
+
+	// webinar detail project slider
+	$('.projectslider').slick({
+	  dots: true,
+	  arrows:false,
+	  infinite: true,
+	  speed: 300,
+	  autoplay:true,
+	  slidesToShow: 3,
+	  slidesToScroll: 1,
+	  responsive: [
+		{
+		  breakpoint: 1200,
+		  settings: {
+			slidesToShow: 3,
+			slidesToScroll: 1 
+		  }
+		},
+		{
+		  breakpoint: 992,
+		  settings: {
+			slidesToShow: 2,
+			slidesToScroll: 1
+		  }
+		},
+		{
+		  breakpoint: 668,
+		  settings: {
+			slidesToShow: 1,
+			slidesToScroll: 1
+		  }
+		}
+	  ]
+	});
+
+
+	// webinar detail project slider
+	$('.eventslider').slick({
+	  dots: false,
+	  arrows:true,
+	  centerMode: true,
+	  infinite: true,
+	  speed: 300,
+	  asNavFor: '.timelineslider',
+	  autoplay: false,
+	  slidesToShow: 5,
+	  slidesToScroll: 1,
+	  responsive: [
+		{
+		  breakpoint: 1200,
+		  settings: {
+			slidesToShow: 5,
+			slidesToScroll: 1,
+			centerMode: true, 
+		  }
+		},
+		{
+		  breakpoint: 992,
+		  settings: {
+			slidesToShow: 5,
+			slidesToScroll: 1,
+			centerMode: false,
+		  }
+		},
+		{
+		  breakpoint: 870,
+		  settings: {
+			slidesToShow: 4,
+			slidesToScroll: 1,
+			centerMode: false,
+		  }
+		},
+		{
+		  breakpoint: 668,
+		  settings: {
+			slidesToShow: 3,
+			slidesToScroll: 1,
+			centerMode: false,
+		  }
+		},
+		{
+		  breakpoint: 571,
+		  settings: {
+			slidesToShow: 3,
+			slidesToScroll: 1,
+			centerMode: false,
+		  }
+		},
+		{
+		  breakpoint: 481,
+		  settings: {
+			slidesToShow: 2,
+			slidesToScroll: 1,
+			centerMode: false,
+		  }
+		}
+	  ]
+	});
+	
+
+	// timelineslider project slider
+	$('.timelineslider').slick({
+	  dots: false,
+	  arrows:false,
+	  centerMode: false,
+	  infinite: true,
+	  speed: 400,
+	  asNavFor: '.eventslider',
+	  autoplay:false,
+	  slidesToShow: 1,
+	  slidesToScroll: 1,
+	});
+
+
+	// historyslider testimonial slider js
+	$('.historyslider').slick({
+	  dots: false,
+	  arrows: true,
+	  autoplay:true,
+	  infinite: false,
+	  speed: 300,
+	  asNavFor: '.timlyslidr',
+	  slidesToShow: 3,
+	  slidesToScroll: 1,
+	  responsive: [
+	    {
+	      breakpoint: 1200,
+	      settings: {
+	        slidesToShow: 3,
+	        slidesToScroll: 1,
+	        infinite: true,
+	      }
+	    },
+	    {
+	      breakpoint: 1025,
+	      settings: {
+	        slidesToShow: 2,
+	        slidesToScroll: 1
+	      }
+	    },
+	    {
+	      breakpoint: 671,
+	      settings: {
+	        slidesToShow: 1,
+	        slidesToScroll: 1
+	      }
+	    },
+	    {
+	      breakpoint: 480,
+	      settings: {
+	        slidesToShow: 1,
+	        slidesToScroll: 1
+	      }
+	    }
+	    // You can unslick at a given breakpoint now by adding:
+	    // settings: "unslick"
+	    // instead of a settings object
+	  ]
+	});
+
+
+	// timly history slider testimonial slider js
+	$('.timlyslidr').slick({
+	  dots: false,
+	  arrows: false,
+	  infinite: false,
+	  autoplay:true,
+	  speed: 300,
+	  asNavFor: '.historyslider',
+	  slidesToShow: 3,
+	  slidesToScroll: 1,
+	  responsive: [
+	    {
+	      breakpoint: 1200,
+	      settings: {
+	        slidesToShow: 3,
+	        slidesToScroll: 1,
+	        infinite: true,
+	      }
+	    },
+	    {
+	      breakpoint: 1025,
+	      settings: {
+	        slidesToShow: 2,
+	        slidesToScroll: 1
+	      }
+	    },
+	    {
+	      breakpoint: 671,
+	      settings: {
+	        slidesToShow: 1,
+	        slidesToScroll: 1
+	      }
+	    },
+	    {
+	      breakpoint: 480,
+	      settings: {
+	        slidesToShow: 1,
+	        slidesToScroll: 1
+	      }
+	    }
+	    // You can unslick at a given breakpoint now by adding:
+	    // settings: "unslick"
+	    // instead of a settings object
+	  ]
+	});
+
+
+
+	// tab click to show content js
+    $(".tabbing a").click(function(event){
+		event.preventDefault();
+        $(this).tab('show');
+    });
+
+    $(".contact-tabbing a").click(function(event){
+		event.preventDefault();
+        $(this).tab('show');
+    });
+
+    // isotop gridlayout js
+    $(window).load(function(){
+		if ( $( ".gridlayout" ).length ) {
+			$('.gridlayout').isotope({
+			  // options...
+			  itemSelector: '.grid-item',
+			  masonry: {
+				columnWidth: '.grid-item'
+			  }
+			});
+		}
+	});
+
+
+	$('.careerslider').slick({
+	  dots: true,
+	  arrows:false,
+	  infinite: true,
+	  speed: 300,
+	  autoplay:true,
+	  slidesToShow: 1,
+	  slidesToScroll: 1,
+	});
+
+
+	//accordion jquery
+	if ( $( ".accordion" ).length ) {
+		$(".accordion").smk_Accordion({
+			closeAble: true, //boolean
+		});
+
+	}
+
+
+}); // END of document ready function
+
+$(document).ready(function() {
+	setTimeout(function(){ 
+		if($(document).outerWidth()>667){
+			$('body .homepage_main footer .footer2_middle ._form_4 > div > form ._form-content > ._form_element > ._field-wrapper > input[type="text"]').attr('style','color:#fff !important;');
+			$('body .homepage_main footer .footer2_middle ._form_4 > div > form ._form-content > ._button-wrapper >  button._submit').attr('style',"-webkit-appearance: button !important;cursor: pointer !important;background-image: url(https://www.testhouse.net/ast/themes/testhouse/images/submit-arrow.png) !important;background-repeat: no-repeat !important;background-position: center right 25px !important;background-color: #ff3a3a !important;color: #fff !important;border: none !important;padding: 11px 48px 11px 28px !important;border-radius: 30px !important;font-family: 'Lato', sans-serif !important;font-weight: 600 !important;font-size: 15px !important;letter-spacing: 0 !important;text-transform: capitalize !important;line-height: initial !important;float: right !important;display: inline-block !important;transition: .5s !important;");	
+	
+		}
+		if($(document).outerWidth()<668 ){
+			$('body .homepage_main footer .footer2_middle ._form_4 > div > form ._form-content > ._form_element > ._field-wrapper > input[type="text"]').attr('style','color:#fff !important;');
+			$('body .homepage_main footer .footer2_middle ._form_4 > div > form ._form-content > ._button-wrapper >  button._submit').attr('style',"-webkit-appearance: button !important;cursor: pointer !important;background-image: url(https://www.testhouse.net/ast/themes/testhouse/images/submit-arrow.png) !important;background-repeat: no-repeat !important;background-position: center right 25px !important;background-color: #ff3a3a !important;color: #fff !important;border: none !important;padding: 11px 48px 11px 28px !important;border-radius: 30px !important;font-family: 'Lato', sans-serif !important;font-weight: 600 !important;font-size: 15px !important;letter-spacing: 0 !important;text-transform: capitalize !important;line-height: initial !important;float: left !important;display: inline-block !important;transition: .5s !important;margin:15px 0px 0px;");	
+		}
+	 }, 1000);
+		
+ });
+
+	
+	  	// video modalpopup js
+	// Get the modal
+	
+
+
+// $(document).ready(function() {
+// 	$('.fancybox-media').fancybox({
+// 		openEffect  : 'none',
+// 		closeEffect : 'none',
+// 		helpers : {
+// 			media : {}
+// 		}
+// 	}); 
+// });
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

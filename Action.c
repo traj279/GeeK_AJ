@@ -54,8 +54,6 @@ lr_start_transaction("Testhouse_LaunchSite");
 		"Url=/ast/plugins/contact-form-7/images/ajax-loader.gif", "Referer=https://www.testhouse.net/ast/plugins/contact-form-7/includes/css/styles.css?ver=5.1.1", ENDITEM, 
 		LAST);
 
-	web_add_header("chrome-proxy", 
-		"frfr");
 
 	/*Basic streaming flow skeleton:
 	//Play the movie from the beginning(the entire movie duration is XXX)
